@@ -1,4 +1,3 @@
-
 ##  "all_data.csv" file is required for the operation of the program.
 ##  "all_data.csv" file must be located in the same directory as the program.
 ##The intent of this program is to find the optimal property list for Naive Bayes, and QDA and MLP algorithms.
@@ -38,6 +37,7 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 import time
+import os
 seconds = time.time()
 
 
@@ -49,7 +49,7 @@ features=["Bwd Packet Length Std","Flow Bytes/s","Total Length of Fwd Packets","
 "Flow Packets/s","Fwd Packet Length Mean","Total Backward Packets","Total Fwd Packets","Fwd Packet Length Max",
 "Bwd Packet Length Min",'Label']
     
-df=pd.read_csv('all_data.csv',usecols=features)#CSV rading
+df=pd.read_csv(os.path.join('.', 'all_data.csv'),usecols=features)#CSV rading
 
 
 

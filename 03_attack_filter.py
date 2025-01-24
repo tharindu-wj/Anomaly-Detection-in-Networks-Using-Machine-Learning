@@ -69,7 +69,7 @@ dict_attack={
 
 for i in dict_attack: # in this section, a file is opened for each attack type and is recorded at a random benign flow.
     a,b=0,0
-    ths = open(".\\attacks\\"+i + ".csv", "w")
+    ths = open(os.path.join("attacks", i + ".csv"), "w")
     ths.write(str(main_labels)+"\n")
     benign_num=int(benign/(dict_attack[i]*(7/3)))
     with open("all_data.csv", "r") as file:
@@ -98,13 +98,13 @@ for i in dict_attack: # in this section, a file is opened for each attack type a
 webs=["Web Attack - Brute Force","Web Attack - XSS","Web Attack - Sql Injection"]
 flag=True
 for i in webs:
-    df=pd.read_csv(".\\attacks\\"+str(i)+".csv")
+    df=pd.read_csv(os.path.join("attacks", str(i)+".csv"))
     if flag:
-        df.to_csv('.\\attacks\\Web Attack.csv' ,index = False)
+        df.to_csv(os.path.join('attacks', 'Web Attack.csv'), index=False)
         flag=False
     else:
-        df.to_csv('.\\attacks\\Web Attack.csv' ,index = False,header=False,mode="a")
-    os.remove(".\\attacks\\"+str(i)+".csv")
+        df.to_csv(os.path.join('attacks', 'Web Attack.csv'), index=False, header=False, mode="a")
+    os.remove(os.path.join("attacks", str(i)+".csv"))
 
 
 

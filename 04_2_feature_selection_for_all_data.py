@@ -88,7 +88,13 @@ for j in csv_files:
     print(fea_ture)
     plt.title(j[0:-4]+" Attack - Feature Importance")
     plt.ylabel('Importance')
-    plt.savefig("./feaure_pics/"+j[0:-4]+".pdf",bbox_inches='tight', papertype = 'a4', orientation = 'portrait', format = 'pdf')
+    plt.savefig(
+        os.path.join("feaure_pics", j[0:-4] + ".pdf"),
+        bbox_inches='tight',
+        papertype='a4',
+        orientation='portrait',
+        format='pdf'
+    )
     ths.write((  fea_ture ) )
     plt.tight_layout()
     #plt.show()

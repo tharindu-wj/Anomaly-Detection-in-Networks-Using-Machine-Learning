@@ -38,9 +38,9 @@ import math
 warnings.filterwarnings("ignore")
 
 
-result="./results/results_1.csv" #a CSV file is named in which the results are saved.
-csv_files=os.listdir("attacks")# CSV files names: #The names of the files in the attacks folder are taken and assigned to a list (csv_files).
-path=".\\attacks\\"
+result = os.path.join("results", "results_1.csv")
+csv_files = os.listdir("attacks")
+path = "attacks"  # Simplified since we'll use os.path.join later
 repetition=10
 
 
@@ -51,9 +51,9 @@ def folder(f_name): #this function creates a folder named "results" and "result_
     except OSError:
         print ("The folder could not be created!")
 
-folder_name="./results/"
+folder_name = "results"
 folder(folder_name)
-folder_name="./results/result_graph_1/"
+folder_name = os.path.join("results", "result_graph_1")
 folder(folder_name)
 
 
@@ -103,7 +103,7 @@ for j in csv_files: #this loop runs on the list containing the filenames.Operati
     a=[]
     
     feature_list=list(features[j[0:-4]])
-    df=pd.read_csv(path+j,usecols=feature_list)#read an attack file.
+    df=pd.read_csv(os.path.join(path, j),usecols=feature_list)#read an attack file.
     df=df.fillna(0)
     attack_or_not=[]
     for i in df["Label"]: #it changes the normal label to "1" and the attack tag to "0" for use in the machine learning algorithm
@@ -180,7 +180,13 @@ for j in csv_files: #this loop runs on the list containing the filenames.Operati
                 break
         if temp==7:
             break
-    plt.savefig(folder_name+j[0:-4]+".pdf",bbox_inches='tight', papertype = 'a4', orientation = 'portrait', format = 'pdf')
+    plt.savefig(
+        os.path.join(folder_name, j[0:-4] + ".pdf"),
+        bbox_inches='tight',
+        papertype='a4',
+        orientation='portrait',
+        format='pdf'
+    )
     plt.show()
     print("\n------------------------------------------------------------------------------------------------------\n\n")
     

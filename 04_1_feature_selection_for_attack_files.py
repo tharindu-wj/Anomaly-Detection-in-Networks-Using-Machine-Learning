@@ -47,7 +47,7 @@ main_labels=["Flow Duration","Total Fwd Packets",   "Total Backward Packets","To
 ths = open("importance_list_for_attack_files.csv", "w")
 folder("./feaure_pics/")
 for j in csv_files:
-    df=pd.read_csv(".\\attacks\\"+j,usecols=main_labels)
+    df=pd.read_csv(os.path.join("attacks", j),usecols=main_labels)
     df=df.fillna(0)
     attack_or_not=[]
     for i in df["Label"]:#it changes the normal label to "1" and the attack tag to "0" for use in the machine learning algorithm
@@ -88,7 +88,7 @@ for j in csv_files:
     print(fea_ture)
     plt.title(j[0:-4]+" Attack - Feature Importance")
     plt.ylabel('Importance')
-    plt.savefig("./feaure_pics/"+j[0:-4]+".pdf",bbox_inches='tight', papertype = 'a4', orientation = 'portrait', format = 'pdf')
+    plt.savefig(os.path.join("feaure_pics", j[0:-4] + ".pdf"), bbox_inches='tight', papertype='a4', orientation='portrait', format='pdf')
     ths.write((  fea_ture ) )
     plt.tight_layout()
     plt.show()

@@ -39,9 +39,9 @@ import math
 warnings.filterwarnings("ignore")
 
 
-result="./results/results_2.csv" #a CSV file is named in which the results are saved.
-csv_files=["all_data.csv"]# CSV files names: #The names of the dataset files (csv_files).
-path=""
+result = os.path.join("results", "results_2.csv")
+csv_files = ["all_data.csv"]
+path = ""
 repetition=10
 
 
@@ -52,9 +52,9 @@ def folder(f_name): #this function creates a folder named "results" and "result_
     except OSError:
         print ("The folder could not be created!")
 
-folder_name="./results/"
+folder_name = "results"
 folder(folder_name)
-folder_name="./results/result_graph_2/"
+folder_name = os.path.join("results", "result_graph_2")
 folder(folder_name)
 
 
@@ -161,7 +161,13 @@ for j in csv_files: #this loop runs on the list containing the filenames.Operati
         plt.boxplot(f1)
         plt.title("All Dataset - " +str(ii))
         plt.ylabel('F-measure')
-        plt.savefig(folder_name+j[0:-4]+str(ii)+".pdf",bbox_inches='tight', papertype = 'a4', orientation = 'portrait', format = 'pdf')
+        plt.savefig(
+            os.path.join(folder_name, j[0:-4] + str(ii) + ".pdf"),
+            bbox_inches='tight',
+            papertype='a4',
+            orientation='portrait',
+            format='pdf'
+        )
         plt.show()# you can remove the # sign if you want to see the graphics simultaneously
 
 print("mission accomplished!")
