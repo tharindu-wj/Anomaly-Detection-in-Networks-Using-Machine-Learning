@@ -2,9 +2,36 @@
 A thesis submitted for the degree of Master of Science in Computer Networks and Security
 ###### This file gives information on how to use the implementation files of "Anomaly Detection in Networks Using Machine Learning" ( A thesis submitted for the degree of Master of Science in Computer Networks and Security written by Kahraman Kostas )
 
+## Installation
 
-Python 3.6 was used to create the application files. Before running the files, it must be ensured that [Python 3.6](https://www.python.org/downloads/) and the following libraries are installed.
+### Prerequisites
+- Python 3.6
+- Poetry (Python dependency management tool)
 
+### Installing Poetry
+```bash
+pip install poetry
+```
+
+### Setting up the project
+
+1. Install dependencies using Poetry
+```bash
+poetry install
+```
+
+2. Activate the virtual environment
+```bash
+poetry shell
+```
+
+3. Start Jupyter Notebook
+```bash
+poetry run jupyter notebook
+```
+
+### Required Dependencies
+All required dependencies will be automatically installed by Poetry:
 | Library | Task |
 | ------ | ------ |
 |[ Sklearn ](http://scikit-learn.org/stable/install.html)| Machine Learning Library|
